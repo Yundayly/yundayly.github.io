@@ -1,0 +1,30 @@
+!DOCTYPE html>
+<html>
+<head>
+    <title>Калькулятор кладки</title>
+</head>
+<body>
+    <h1>Калькулятор кладки стены</h1>
+    <form id="brickCalculator">
+        Длина стены (м): <input type="number" id="length"><br>
+        Высота стены (м): <input type="number" id="height"><br>
+        Размер кирпича (см): <input type="number" id="brickSize"><br>
+        <button type="button" onclick="calculateBricks()">Рассчитать</button><br>
+        <p id="result"></p>
+    </form>
+
+    <script>
+        function calculateBricks() {
+            var length = document.getElementById("length").value;
+            var height = document.getElementById("height").value;
+            var brickSize = document.getElementById("brickSize").value;
+
+            var wallArea = length * height;
+            var brickArea = (brickSize / 100) ** 2;
+            var bricksNeeded = wallArea / brickArea;
+
+            document.getElementById("result").innerHTML = "Для постройки стены понадобится " + Math.ceil(bricksNeeded) + " кирпичей.";
+        }
+    </script>
+</body>
+</html>
